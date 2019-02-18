@@ -1,6 +1,6 @@
 import { POPULATE_IMAGES } from "../actions/actionTypes";
 
-let initialState = {
+const initialState = {
 	list: []
 }
 
@@ -10,13 +10,13 @@ export const images = (state = initialState, { type, payload }) => {
 			return {
 				list: payload.data.list.map((item, index) => {
 					return {
-						id: index,
+						id: index + 1,
 						url: item,
 						category: payload.data.category
 					}
 				}),
 				imagesCategory: payload.data.category
-			};		
+			};
 		default:
 			return state;
 	}

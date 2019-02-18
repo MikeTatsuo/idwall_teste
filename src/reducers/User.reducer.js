@@ -1,6 +1,6 @@
 import { UPDATE_USER } from "../actions/actionTypes";
 
-var initialState = {
+const initialState = {
 	email: "",
 	token: "",
 	error: ""

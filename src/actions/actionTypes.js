@@ -1,3 +1,6 @@
 export const UPDATE_USER = "UPDATE_USER";
 export const POPULATE_IMAGES = "POPULATE_IMAGES";
 export const SELECT_CATEGORY = "SELECT_CATEGORY";
+export const EXTRACT_IMAGE = "EXTRACT_IMAGE";
+export const SHOW_IN_PAGE = "SHOW_IN_PAGE";
+export const LEAVE_PAGE = "LEAVE_PAGE";

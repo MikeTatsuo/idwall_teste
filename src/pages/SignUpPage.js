@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Header from '../components/Header';
+import { Header } from '../components/Header';
 import * as provider from '../providers/SignUpProvider';
 import { connect } from "react-redux";
 import { updateUser } from "../actions/User.action";
@@ -42,24 +42,28 @@ class SignUpPage extends Component {
 
   render() {
     return (
-      <div className="signup">
-        < Header />
-        <form onSubmit={this.handleSubmit}>
-          <input type="email" value={this.state.email} onChange={this.handleChange} />
-          <input type="submit" value="Submit" />
-        </form>
-
-        <p>Token : {this.props.token}</p>
-        <p>Erro: {this.props.error}</p>
-      </div>
+      <section>
+        <a className="btn btn-light" type="button" data-toggle="collapse" href="#collapseSignUpInput" role="button" aria-expanded="false">
+          < Header />
+        </a>
+        <div className="collapse" id="collapseSignUpInput">
+          <div className="card card-body border border-white">
+            <p>Erro: {this.props.error}</p>
+            <form onSubmit={this.handleSubmit}>
+              <input className="d-block" type="email" value={this.state.email} onChange={this.handleChange} />
+              <button className="btn btn-light text-muted d-block" type="submit" value="Submit">Submit</button>
+            </form>
+          </div>
+        </div>
+      </section>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-    email: state.user.email,
-    token: state.user.token,
-    error: state.user.error
+  email: state.user.email,
+  token: state.user.token,
+  error: state.user.error
 });
 
 export default connect(mapStateToProps, { updateUser })(SignUpPage);
