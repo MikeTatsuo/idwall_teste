@@ -1,20 +1,23 @@
 import React, { Component } from 'react';
-import Signup from './pages/signup';
-import Feed from './pages/feed';
 
+import FeedPage from "./pages/FeedPage";
+import SignUpPage from "./pages/SignUpPage";
 
+import { connect } from "react-redux";
 
 class App extends Component {
+
   render() {
     return (
-      <div className="App">
-
-        <Signup />
-
-        <Feed />
+      <div className="App" >
+        {this.props.token ? <FeedPage token={this.props.token}/> : <SignUpPage />}
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return { token: state.user.token }
+}
+
+export default connect(mapStateToProps)(App);

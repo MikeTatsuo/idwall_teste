@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class FeedPhoto extends Component {
+class Image extends Component {
     render() {
         return (
 
@@ -15,4 +15,4 @@ class FeedPhoto extends Component {
     }
 }
 
-export default FeedPhoto;
+export default Image;
