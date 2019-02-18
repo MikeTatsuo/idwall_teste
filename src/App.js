@@ -10,7 +10,7 @@ class App extends Component {
   render() {
     return (
       <div className="App" >
-        {this.props.token ? <FeedPage token={this.props.token}/> : <SignUpPage />}
+        {this.props.token ? <FeedPage /> : <SignUpPage />}
       </div>
     );
   }

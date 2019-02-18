@@ -1,7 +1,33 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import * as provider from "../providers/FeedProvider"
+import { populateImages } from "../actions/ImagesList.action";
 
 class ImagesList extends Component {
+  componentDidMount() {
+    this.getImagesPerCategory(this.props.selectedCategory)
+  }
+
+  componentDidUpdate() {
+    if (this.props.imagesCategory && this.props.selectedCategory !== this.props.imagesCategory) {
+      this.getImagesPerCategory(this.props.selectedCategory)
+    }
+  }
+
+  onPopulateImages(data) {
+    this.props.populateImages(data)
+  }
+
+  getImagesPerCategory(ca) {
+    provider.getFeed(this.props.token, ca)
+      .then(r => {
+        this.onPopulateImages(r)
+      })
+      .catch(error => {
+        console.error(error)
+      })
+  }
+
   mountList(list = []) {
     if (list.length) {
       return (
@@ -27,9 +53,10 @@ class ImagesList extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  images: {
-    list: state.images.list
-  }
+  images: state.images,
+  imagesCategory: state.images.imagesCategory,
+  selectedCategory: state.category.selectedCategory,
+  token: state.user.token
 })
 
-export default connect(mapStateToProps)(ImagesList);
+export default connect(mapStateToProps, { populateImages })(ImagesList);
