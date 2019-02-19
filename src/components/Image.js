@@ -4,12 +4,8 @@ import { connect } from "react-redux";
 class Image extends Component {
 	render() {
 		return (
-			<div className="container" >
-				<div className="row" >
-					<div className="col">
-						< img src={this.props.image.url} alt="teste"> </img>
-					</div>
-				</div>
+			<div className="container">
+				<img className="responsive-img" src={this.props.image.url} alt="teste" />
 			</div>
 		);
 	}

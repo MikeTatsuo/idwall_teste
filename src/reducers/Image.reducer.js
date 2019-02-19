@@ -1,4 +1,8 @@
-import { EXTRACT_IMAGE, SHOW_IN_PAGE, LEAVE_PAGE } from "../actions/actionTypes";
+import {
+	EXTRACT_IMAGE,
+	SHOW_IN_PAGE,
+	LEAVE_PAGE
+} from "../actions/actionTypes";
 
 const initialState = {
 	id: 0,
@@ -6,7 +10,10 @@ const initialState = {
 	show: false
 }
 
-export const image = (state = initialState, { type, payload }) => {
+export const image = (state = initialState, {
+	type,
+	payload
+}) => {
 	switch (type) {
 		case EXTRACT_IMAGE:
 			return payload.images.list.find((im) => {
@@ -14,14 +21,14 @@ export const image = (state = initialState, { type, payload }) => {
 			})
 		case SHOW_IN_PAGE:
 			return {
-				image: {
-					id: payload.image.id,
-					url: payload.image.url,
-					show: !payload.image.show
-				}
+				id: payload.id,
+				url: payload.url,
+				show: !payload.show
 			}
 		case LEAVE_PAGE:
-			return { image: initialState }
+			return {
+				image: initialState
+			}
 		default:
 			return state;
 	}

@@ -4,7 +4,7 @@ const initialState = {
 	selectedCategory: ""
 }
 
-export const category = (state = initialState, {type, payload}) => {
+export const category = (state = initialState, { type, payload }) => {
 	switch (type) {
 		case SELECT_CATEGORY:
 			return {

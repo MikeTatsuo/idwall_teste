@@ -15,7 +15,7 @@ export const showInPage = (data) => {
 }
 
 export const leavePage = () => {
-	return({
+	return ({
 		type: LEAVE_PAGE,
 		payload: {}
 	})

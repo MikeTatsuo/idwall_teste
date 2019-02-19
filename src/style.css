@@ -1,0 +1,47 @@
+.tabs .tab a {
+    color: #aaa;
+}
+
+.tabs .tab a:hover {
+    background-color: #fff;
+    color: #000;
+    font-weight: bold;
+}
+
+.tabs .tab a.active {
+    background-color: #fff;
+    color: #000;
+    font-weight: bold;
+}
+
+.tabs .indicator {
+    background-color: #000;
+}
+
+.tabs .tab a:focus,
+.tabs .tab a:focus.active {
+    background-color: #fff;
+    color: #000
+}
+
+.dogs_img {
+    max-height: 100%;
+    height: auto;
+    max-width: 100%;
+    width: 100%;
+    display: block;
+    margin: auto;
+}
+
+.dogs_div {
+    margin-top:15px;
+    padding: 0.75rem !important;
+}
+
+.dogs_row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+}

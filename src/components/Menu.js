@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { CATEGORY } from "../Categories";
 import { selectCategory } from "../actions/Category.action";
+import { leavePage } from "../actions/Image.action";
 import { connect } from "react-redux";
+import "../style.css";
 
 class Menu extends Component {
   componentDidMount() {
@@ -9,17 +11,24 @@ class Menu extends Component {
   }
 
   onSelectCategory(categ) {
+    if (this.props.image.show){
+      this.onLeavePage()
+    }
     this.props.selectCategory({
       selectedCategory: categ
     })
+  }
+
+  onLeavePage(){
+    this.props.leavePage()
   }
 
   menuItem() {
     let items = []
     for (let cat in CATEGORY) {
       items.push(
-        (<li className="nav-item" key={`li-${cat}`}>
-          <a key={`a-${cat}`} className={`nav-link ${this.props.selectedCategory === cat.toLowerCase() ? 'active' : ''}`} href="#" onClick={() => { this.onSelectCategory(cat.toLowerCase()) }}>{cat}</a>
+        (<li className="tab" key={`li-${cat}`}>
+          <a key={`a-${cat}`} className={`${this.props.selectedCategory === cat.toLowerCase() ? 'active' : ''}`} href="#" onClick={() => { this.onSelectCategory(cat.toLowerCase()) }}>{cat}</a>
         </li>)
       )
     }
@@ -28,7 +37,7 @@ class Menu extends Component {
 
   render() {
     return (
-      <ul className="nav nav-tabs justify-content-center">
+      <ul className="tabs tabs-fixed-width z-depth-1">
         {this.menuItem()}
       </ul>
     );
@@ -36,7 +45,8 @@ class Menu extends Component {
 }
 
 const mapStatetoProps = (state) => ({
-  selectedCategory: state.category.selectedCategory
+  selectedCategory: state.category.selectedCategory,
+  image: state.image
 })
 
-export default connect(mapStatetoProps, { selectCategory })(Menu);
+export default connect(mapStatetoProps, { selectCategory, leavePage })(Menu);

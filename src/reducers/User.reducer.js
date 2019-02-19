@@ -6,7 +6,7 @@ const initialState = {
 	error: ""
 };
 
-export const user = (state = initialState, {type, payload}) => {
+export const user = (state = initialState, { type, payload }) => {
 	switch (type) {
 		case UPDATE_USER:
 			return payload.user;

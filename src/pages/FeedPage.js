@@ -3,24 +3,20 @@ import { Header } from '../components/Header';
 import Menu from "../components/Menu";
 import ImagesList from '../components/ImagesList';
 import Image from "../components/Image"
-import Modal from "../components/Modal";
 import { connect } from "react-redux";
 
 class FeedPage extends Component {
 	render() {
 		return (
-			<div>
-				<header>
-					<Header />
-				</header>
-				<nav>
-					<Menu />
-				</nav>
-				<section>
-					{this.props.show ? <Image /> : <ImagesList />}
-					<Modal />
-				</section>
-			</div>
+			<section>
+				<div className="row">
+					<div className="col s12">
+						<Header />
+						<Menu />
+						{this.props.show ? <Image /> : <ImagesList />}
+					</div>
+				</div>
+			</section>
 		);
 	}
 }
