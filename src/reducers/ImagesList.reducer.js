@@ -12,7 +12,8 @@ export const images = (state = initialState, { type, payload }) => {
 					return {
 						id: index + 1,
 						url: item,
-						category: payload.data.category
+						category: payload.data.category,
+						show: false
 					}
 				}),
 				imagesCategory: payload.data.category

@@ -1,14 +1,15 @@
-.tabs .tab a {
+.tabs .tab div {
     color: #aaa;
 }
 
-.tabs .tab a:hover {
+.tabs .tab div:hover {
     background-color: #fff;
     color: #000;
     font-weight: bold;
+    cursor: pointer;
 }
 
-.tabs .tab a.active {
+.tabs .tab div.active {
     background-color: #fff;
     color: #000;
     font-weight: bold;
@@ -18,8 +19,8 @@
     background-color: #000;
 }
 
-.tabs .tab a:focus,
-.tabs .tab a:focus.active {
+.tabs .tab div:focus,
+.tabs .tab div:focus.active {
     background-color: #fff;
     color: #000
 }

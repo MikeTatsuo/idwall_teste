@@ -6,6 +6,7 @@ import { extractImage, showInPage } from "../actions/Image.action";
 import ImageModal from "./ImageModal";
 import M from 'materialize-css';
 import '../style.css';
+import { Redirect } from "react-router-dom";
 
 class ImagesList extends Component {
   componentDidMount() {
@@ -31,25 +32,26 @@ class ImagesList extends Component {
     }
     this.props.extractImage(data)
 
-    const elem = document.querySelector('.modal');
-    const instance = M.Modal.init(elem, {
+    const instance = M.Modal.init(document.querySelector('.modal'), {
       onCloseEnd: () => this.onShowInPage()
     });
     instance.open();
   }
 
   onShowInPage() {
-      this.props.showInPage(this.props.image)
+    this.props.showInPage(this.props.image)
   }
 
   getImagesPerCategory(ca) {
-    provider.getFeed(this.props.token, ca)
-      .then(r => {
-        this.onPopulateImages(r)
-      })
-      .catch(error => {
-        M.toast({ html: error })
-      })
+    if (this.props.token) {
+      provider.getFeed(this.props.token, ca)
+        .then(r => {
+          this.onPopulateImages(r)
+        })
+        .catch(error => {
+          M.toast({ html: error })
+        })
+    }
   }
 
   mountList(list = []) {
@@ -73,6 +75,11 @@ class ImagesList extends Component {
         <div className="row dogs_row">
           {this.props.images.list ? this.mountList(this.props.images.list) : ""}
         </div>
+        <Redirect to={{
+          pathname: "/feed",
+          search: this.props.image.category ? `?category=${this.props.image.category}&id=${this.props.image.id}` : '',
+          state: { referrer: "currentLocation" }
+        }} />
         <ImageModal />
       </div>
     );

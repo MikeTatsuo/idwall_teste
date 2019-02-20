@@ -11,7 +11,7 @@ class Menu extends Component {
   }
 
   onSelectCategory(categ) {
-    if (this.props.image.show){
+    if (this.props.image.show) {
       this.onLeavePage()
     }
     this.props.selectCategory({
@@ -19,8 +19,8 @@ class Menu extends Component {
     })
   }
 
-  onLeavePage(){
-    this.props.leavePage()
+  onLeavePage() {
+    this.props.leavePage()    
   }
 
   menuItem() {
@@ -28,7 +28,7 @@ class Menu extends Component {
     for (let cat in CATEGORY) {
       items.push(
         (<li className="tab" key={`li-${cat}`}>
-          <a key={`a-${cat}`} className={`${this.props.selectedCategory === cat.toLowerCase() ? 'active' : ''}`} href="#" onClick={() => { this.onSelectCategory(cat.toLowerCase()) }}>{cat}</a>
+          <div key={`a-${cat}`} className={`${this.props.selectedCategory === cat.toLowerCase() ? 'active' : ''}`} href="" onClick={() => { this.onSelectCategory(cat.toLowerCase()) }}>{cat}</div>
         </li>)
       )
     }

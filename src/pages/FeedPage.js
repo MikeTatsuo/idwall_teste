@@ -9,20 +9,20 @@ class FeedPage extends Component {
 	render() {
 		return (
 			<section>
-				<div className="row">
-					<div className="col s12">
-						<Header />
-						<Menu />
-						{this.props.show ? <Image /> : <ImagesList />}
+					<div className="row">
+						<div className="col s12">
+							<Header />
+							<Menu />
+							{this.props.image.show ? <Image /> : <ImagesList />}
+						</div>
 					</div>
-				</div>
 			</section>
 		);
 	}
 }
 
 const mapStateToProps = (state) => ({
-	show: state.image.show
+	image: state.image
 })
 
 export default connect(mapStateToProps)(FeedPage)

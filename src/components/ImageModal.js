@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 class ImageModal extends Component {
 	render() {
-		return (
+		return (			
 			<div className="modal" id="imageModal">
 				<div className="modal-content center-align">
 					<img className="responsive-img" src={this.props.image.url} alt={this.props.image.category}></img>
